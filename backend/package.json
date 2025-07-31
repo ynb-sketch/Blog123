@@ -1,0 +1,61 @@
+{
+  "name": "my",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "cra-template": "1.2.0",
+    "dotenv": "^17.2.1",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.2",
+    "express": "^5.1.0",
+    "file-type": "^21.0.0",
+    "formidable": "^3.5.4",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.16.5",
+    "nodemon": "^3.1.10",
+    "prettier": "^3.4.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-scripts": "5.0.1",
+    "validator": "^13.15.15"
+  },
+  "scripts": {
+    "dev": "nodemon src/App.js",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "prettier"
+    ],
+    "plugins": [
+      "prettier"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "web-vitals": "^4.2.4"
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "App.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
