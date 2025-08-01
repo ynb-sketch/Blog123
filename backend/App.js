@@ -210,11 +210,11 @@ app.post('/create', (req, res) => {
 	});
 });
 app.use('/api', routes);
-app.use('/api/post', routes);
-app.use('/api/users', routes);
+app.use('/posts', routes);
+app.use('/users', routes);
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.get('*', (req, res) => {
+app.get(/(.*)/, (req, res) => {
 	res.sendFile(path.resolve('..', 'frontend', 'build', 'index.html'));
 });
 

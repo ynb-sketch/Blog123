@@ -1,5 +1,9 @@
 {
   "dependencies": {
-    "dotenv": "^17.2.1"
+    "dotenv": "^17.2.1",
+    "file-type": "^21.0.0"
+  },
+  "devDependencies": {
+    "@babel/helper-compilation-targets": "^7.27.2"
   }
 }
