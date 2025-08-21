@@ -51,21 +51,46 @@ router.delete(
 	},
 );
 
-router.post('/', authenticated, hasRole([ROLES.ADMIN]), async (req, res) => {
-	const newPost = await addPost({
-		title: req.body.title,
-		content: req.body.content,
-		image: req.body.imageUrl,
-	});
+// router.post('/', authenticated, hasRole([ROLES.ADMIN]), async (req, res) => {
+// 	const newPost = await addPost({
+// 		title: req.body.title,
+// 		content: req.body.content,
+// 		category: req.body.category,
+// 		image: req.body.imageUrl,
+// 		price: req.body.price,
+// 		comments: req.body.comments,
+// 		// publishedAt: req.body.publishedAt,
+// 	});
 
-	res.send({ data: mapPost(newPost) });
+// 	res.send({ data: mapPost(newPost) });
+// 	console.log('вот');
+// });
+router.post('/', authenticated, hasRole([ROLES.ADMIN]), async (req, res) => {
+	try {
+		const newPost = await addPost({
+			title: req.body.title,
+			content: req.body.content,
+			category: req.body.category,
+			image: req.body.imageUrl,
+			price: req.body.price,
+			comments: req.body.comments,
+		});
+		res.send({ data: mapPost(newPost) });
+	} catch (error) {
+		console.error('Error adding post:', error);
+		res.status(500).send({ error: 'Failed to add post' });
+	}
 });
 
 router.patch('/:id', authenticated, hasRole([ROLES.ADMIN]), async (req, res) => {
 	const updatedPost = await editPost(req.params.id, {
 		title: req.body.title,
 		content: req.body.content,
+		category: req.body.category,
 		image: req.body.imageUrl,
+		price: req.body.price,
+		comments: req.body.comments,
+		// publishedAt: req.body.publishedAt,
 	});
 
 	res.send({ data: mapPost(updatedPost) });

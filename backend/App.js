@@ -151,13 +151,14 @@
 // 	});
 /////////////////////////////////////////////////////////////////////////
 
-require('dotenv').config();
+require('dotenv').config({ silent: true });
 
 const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
 const { IncomingForm } = require('formidable');
 const { fileTypeFromFile } = require('file-type');
+
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const routes = require('./routes');
@@ -189,14 +190,21 @@ app.post('/create', (req, res) => {
 		// Проверка типа файла
 		const filePath = files.imageFile.path;
 		const fileType = await fileTypeFromFile(filePath);
-
+		console.log(fileType);
+		console.log(fileTypeFromFile);
 		if (!fileType || !fileType.mime.startsWith('image/')) {
+			console.log(fileType);
+			console.log(fileTypeFromFile);
 			return res.status(400).send('Uploaded file is not an image');
 		}
 
 		const newPost = new Post({
 			title: fields.title,
 			content: fields.content,
+			category: fields.category,
+			// publishedAt: fields.publishedAt,
+			price: fields.price,
+			comments: fields.comments,
 			imagePath: filePath,
 		});
 
@@ -211,6 +219,7 @@ app.post('/create', (req, res) => {
 });
 app.use('/api', routes);
 app.use('/posts', routes);
+// app.use('/editing', routes);
 app.use('/users', routes);
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
